@@ -54,7 +54,7 @@ if (shareID !== null) {
             const note = document.querySelector(".note");
             const name = document.querySelector(".sender-name");
 
-            name.innerHTML = result["record"]["name"];
+            name.innerHTML = result["record"]["sender"];
             note.value = result["record"]["note"];
         });
 }
