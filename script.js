@@ -45,7 +45,7 @@ class NoteHandler {
 
 const params = new URLSearchParams(window.location.href);
 const shareID = params.get("share");
-
+console.log(shareID);
 if (shareID !== null) {
     const receive = new NoteHandler("anything for now");
     
