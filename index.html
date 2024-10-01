@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Share notes with your friends</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="theme">
+                <input type="checkbox" id="toggle-theme">
+                <label class="switch" for="toggle-theme"></label>
+            </div>
+            <h2>A note from <span class="sender-name" contenteditable="true" spellcheck="false"
+                title="Click to change name">name</span></h2>
+        </header>
+        <main>
+            <div class="note-wrapper">
+                <textarea class="note"></textarea>
+            </div>
+            <button class="button-share" onclick="share()">Share</button>
+        </main>
+    </div>
+    <script type="module" src="script.js"></script>
+</body>
+</html>
