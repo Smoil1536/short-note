@@ -43,7 +43,7 @@ class NoteHandler {
     }
 }
 
-const params = new URLSearchParams(window.location.href);
+const params = new URLSearchParams(window.location.search);
 const shareID = params.get("share");
 
 if (shareID !== null) {
