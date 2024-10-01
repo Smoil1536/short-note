@@ -2,6 +2,9 @@ const API_KEY = "$2a$10$Rc9zVq.18U/l6zYP.ucXnOEY1nxq7z3M07sd7WPea2bKoW2l561Tq";
 const ROOT_URL = "https://api.jsonbin.io/v3/b";
 
 class NoteHandler {
+    constructor(id) {
+        this.id = id;
+    }
     async post(data) {
         try {
             let response = await fetch(ROOT_URL, {
@@ -40,31 +43,32 @@ class NoteHandler {
     }
 }
 
-const params = new URLSearchParams(window.location.search);
+const params = new URLSearchParams(window.location.href);
 const shareID = params.get("share");
-console.log(shareID);
+
 if (shareID !== null) {
-    const receive = new NoteHandler();
+    const receive = new NoteHandler("anything for now");
     
     receive.get(shareID)
         .then(result => {
             const note = document.querySelector(".note");
             const name = document.querySelector(".sender-name");
 
-            name.innerHTML = result["record"]["sender"];
+            name.innerHTML = result["record"]["name"];
             note.value = result["record"]["note"];
         });
 }
 
 async function share() {
-    const send = new NoteHandler();
+    // const ID = generateID();
+    const send = new NoteHandler("anything for now");
     const data = createData();
 
     const ID = await send.post(data);
     const param = new URLSearchParams();
 
     param.append("share", ID);
-    console.log(window.location.href + "?" + param.toString());
+    document.querySelector("#link").innerHTML = window.location.href + "?" + param.toString();
 }
 function createData() {
     const note = document.querySelector(".note").value;
