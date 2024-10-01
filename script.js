@@ -2,9 +2,6 @@ const API_KEY = "$2a$10$Rc9zVq.18U/l6zYP.ucXnOEY1nxq7z3M07sd7WPea2bKoW2l561Tq";
 const ROOT_URL = "https://api.jsonbin.io/v3/b";
 
 class NoteHandler {
-    constructor(id) {
-        this.id = id;
-    }
     async post(data) {
         try {
             let response = await fetch(ROOT_URL, {
@@ -47,7 +44,7 @@ const params = new URLSearchParams(window.location.search);
 const shareID = params.get("share");
 console.log(shareID);
 if (shareID !== null) {
-    const receive = new NoteHandler("anything for now");
+    const receive = new NoteHandler();
     
     receive.get(shareID)
         .then(result => {
@@ -60,8 +57,7 @@ if (shareID !== null) {
 }
 
 async function share() {
-    // const ID = generateID();
-    const send = new NoteHandler("anything for now");
+    const send = new NoteHandler();
     const data = createData();
 
     const ID = await send.post(data);
@@ -81,27 +77,3 @@ function createData() {
     
     return JSON.stringify(data);
 }
-// function generateID() {
-//     const d = new Date();
-//     let time = d.getTime();
-//     let id = String(Math.floor(Math.random() * 1000000)) + String(time);
-
-//     return id;
-// }
-// async function postNote() {
-//     try {
-//         let response = await fetch(ROOT_URL, {
-//             method: "POST",
-            
-//             headers: {
-//                 "Content-Type": "application/json",
-//                 "X-Master-Key": API_KEY
-//             },
-//             body: {
-//                 "name": "anythin" 
-//             },
-//         });
-//     } catch (err) {
-//         throw new console.error(err);
-//     }
-// }
