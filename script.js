@@ -27,7 +27,7 @@ class NoteHandler {
 
     async get(binID) {
         try {
-            let response = await fetch(ROOT_URL + "/" + binID, {
+            let response = await fetch(ROOT_URL + "/" + binID+"/latest", {
                 method: "GET",
                 headers: {
                     "X-Master-Key": API_KEY,
